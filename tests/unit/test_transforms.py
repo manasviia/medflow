@@ -8,7 +8,6 @@ from medflow.data.transforms.imaging import get_train_transforms, get_val_transf
 
 def _dummy_image(size: int = 256) -> Image.Image:
     """Create a dummy RGB image for testing."""
-    import numpy as np
     arr = (torch.rand(size, size, 3) * 255).byte().numpy()
     return Image.fromarray(arr, mode="RGB")
 
