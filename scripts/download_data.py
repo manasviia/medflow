@@ -11,9 +11,7 @@ Note: Full dataset is ~45GB. Use --sample for a 1000-image dev subset.
 """
 
 import argparse
-import shutil
 import urllib.request
-import zipfile
 from pathlib import Path
 
 from loguru import logger
@@ -59,8 +57,8 @@ def create_val_split(
     n_val = int(len(patient_ids) * val_fraction)
     val_patients = set(patient_ids[:n_val])
 
-    train_lines = [l for l in lines if l.split("_")[0] not in val_patients]
-    val_lines = [l for l in lines if l.split("_")[0] in val_patients]
+    train_lines = [line for line in lines if line.split("_")[0] not in val_patients]
+    val_lines = [line for line in lines if line.split("_")[0] in val_patients]
 
     train_out.write_text("\n".join(train_lines))
     val_out.write_text("\n".join(val_lines))
