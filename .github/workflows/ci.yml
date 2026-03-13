@@ -47,12 +47,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install loguru numpy pytest pytest-cov
-          pip install -e . --no-deps
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install loguru numpy Pillow pytest pytest-cov
 
       - name: Run tests
-        run: pytest tests/ -v --cov=medflow --cov-report=xml
+        run: PYTHONPATH=$GITHUB_WORKSPACE pytest tests/ -v --cov=medflow --cov-report=xml
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
