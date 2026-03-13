@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-          pip install loguru numpy Pillow pytest pytest-cov
+          pip install loguru numpy Pillow scikit-learn mlflow pandas pytest pytest-cov
 
       - name: Run tests
         run: PYTHONPATH=$GITHUB_WORKSPACE pytest tests/ -v --cov=medflow --cov-report=xml
