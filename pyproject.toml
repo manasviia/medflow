@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "medflow"
@@ -9,7 +9,7 @@ description = "Production-grade chest X-ray pathology detection with uncertainty
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "Manasvi Agarwal", email = "hrishik@bu.edu" }]
+authors = [{ name = "Manasvi Agarwal", email = "agarw23m@mtholyoke.edu" }]
 
 dependencies = [
     "torch>=2.0.0",
@@ -34,15 +34,22 @@ dependencies = [
 dev = [
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
-    "ruff>=0.1.0",
-    "black>=23.0.0",
+    "ruff>=0.4.0",
+    "black>=24.0.0",
     "mypy>=1.5.0",
     "pre-commit>=3.4.0",
+    # Lightweight stubs for CI (avoids installing full torch on runner)
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "loguru>=0.7.0",
 ]
 
 [tool.ruff]
 line-length = 100
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
 
 [tool.black]
 line-length = 100
