@@ -1,0 +1,17 @@
+# Baseline experiment — EfficientNet-B4 with default hyperparameters
+# Run: python scripts/train.py --config-name experiment_baseline
+
+defaults:
+  - base
+
+model:
+  backbone: "efficientnet_b4"
+  dropout_rate: 0.3
+
+training:
+  epochs: 50
+  lr: 1e-4
+  batch_size: 32
+
+mlflow:
+  run_name: "baseline-efficientnet-b4"

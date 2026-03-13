@@ -1,0 +1,42 @@
+# Base configuration — all experiments inherit from this
+# Override fields per-experiment in configs/experiments/
+
+data:
+  root_dir: "data/raw"
+  image_size: 224
+  num_workers: 8          # Parallel data loading workers
+  batch_size: 32
+  val_split: 0.1
+  test_split: 0.1
+  pin_memory: true
+
+model:
+  backbone: "efficientnet_b4"   # timm model name
+  pretrained: true
+  num_classes: 14               # NIH ChestX-ray14 pathologies
+  dropout_rate: 0.3
+  mc_dropout_samples: 20        # Monte Carlo samples for uncertainty
+
+training:
+  epochs: 50
+  lr: 1e-4
+  weight_decay: 1e-5
+  scheduler: "cosine"
+  warmup_epochs: 5
+  mixed_precision: true
+  gradient_clip: 1.0
+  seed: 42
+
+mlflow:
+  experiment_name: "medflow"
+  tracking_uri: "mlruns"
+
+serving:
+  host: "0.0.0.0"
+  port: 8000
+  confidence_threshold: 0.5
+  max_batch_size: 16
+
+logging:
+  level: "INFO"
+  log_dir: "logs"
