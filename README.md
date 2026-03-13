@@ -67,7 +67,7 @@ uvicorn medflow.serving.app:app --reload
 - [x] Stage 3: Model Architecture — backbone, multi-label head, uncertainty
 - [x] Stage 4: Training Infrastructure — MLflow, experiment tracking
 - [x] Stage 5: Production Serving — FastAPI, Docker
-- [ ] Stage 6: CI/CD + Quality — GitHub Actions, pytest
+- [x] Stage 6: CI/CD + Quality — GitHub Actions, pytest
 - [ ] Stage 7: Polish — benchmarks, architecture diagram
 
 ## License
